@@ -15,11 +15,7 @@ export default {
 
         const svg = `
             <svg width="600" height="120" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
-                <text
-                x="2%" 
-                y="20%"
-                font-family="monospace" 
-                font-size="14">
+                <text x="2%" y="20%" font-family="monospace" font-size="14">
                     ${motd}
                 </text>
             </svg>
