@@ -1,0 +1,8 @@
+{
+	"name": "motd-generator",
+	"compatibility_date": "2026-01-17",
+	"main": "src/index.js",
+	"observability": {
+		"enabled": true
+	}
+}
