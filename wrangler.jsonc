@@ -4,5 +4,19 @@
 	"main": "src/index.js",
 	"observability": {
 		"enabled": true
+	},
+	"triggers": {
+		"crons": [
+			"0 0 * * *"
+		]
+	},
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "57bdc7d5cef34799a611a9308649a2d4" // Replace with your own KV namespace ID.
+		}
+	],
+	"ai": {
+		"binding": "AI"
 	}
 }

@@ -1,22 +1,19 @@
-const motdQuotes = [
-    "Build things that still make sense at 3 a.m.",
-    "If it works but you don't understand it, it's broken.",
-    "No magic. Just systems, iteration, and receipts.",
-    "Order, carved patiently out of chaos.",
-    "Readable code is a feature. Everything else is negotiable.",
-    "Refuse shortcuts. Ship anyway."
-];
-
 export default {
     async fetch(request, env, ctx) {
-        const motd = motdQuotes[
-            (new Date().getDate() * motdQuotes.length) % motdQuotes.length
-        ];
+        let motd = await env.KV.get("MOTD");
+
+        if (!motd) {
+            await this.updateMOTD(env);
+            motd = await env.KV.get("MOTD");
+        }
 
         const svg = `
-            <svg width="600" height="50" viewBox="0 0 600 50" xmlns="http://www.w3.org/2000/svg">
-                <text x="2%" y="50%" font-family="monospace" font-size="14" fill="#02c39a">
+            <svg width="650" height="50" viewBox="0 0 650 50" xmlns="http://www.w3.org/2000/svg">
+                <text x="2%" y="50%" font-family="monospace" font-size="12" fill="#02c39a">
                     ${motd}
+                </text>
+                <text x="2%" y="85%" font-family="monospace" font-size="10" fill="#078b6e">
+                    🤖 AI-generated daily quote
                 </text>
             </svg>
         `;
@@ -27,5 +24,28 @@ export default {
                 "Cache-Control": "no-cache, no-store, must-revalidate"
             }
         });
+    },
+
+    async scheduled(controller, env, ctx) {
+        await this.updateMOTD(env);
+    },
+
+    async updateMOTD(env) {
+        const res = await env.AI.run("@cf/meta/llama-3.2-1b-instruct", {
+            messages: [
+                {
+                    role: "system",
+                    content: "You are a witty programmer. Output ONLY a short one-sentence (max 80 characters) MOTD. No commentary."
+                },
+                {
+                    role: "user",
+                    content: "Generate a funny programmer MOTD"
+                }
+            ],
+            max_tokens: 20,
+            temperature: 0.8
+        });
+
+        await env.KV.put("MOTD", res.response);
     }
 };
