@@ -8,7 +8,7 @@ export default {
         }
 
         const svg = `
-            <svg width="650" height="50" viewBox="0 0 650 50" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 500 50" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg">
                 <text x="2%" y="50%" font-family="monospace" font-size="12" fill="#02c39a">
                     ${motd}
                 </text>
