@@ -12,7 +12,7 @@ export default {
                 <text x="2%" y="50%" font-family="monospace" font-size="12" fill="#02c39a">
                     ${motd}
                 </text>
-                <text x="2%" y="85%" font-family="monospace" font-size="10" fill="#078b6e">
+                <text x="2%" y="85%" font-family="monospace" font-size="9" fill="#078b6e">
                     🤖 AI-generated daily quote
                 </text>
             </svg>
@@ -35,7 +35,7 @@ export default {
             messages: [
                 {
                     role: "system",
-                    content: "You are a witty programmer. Output ONLY a short one-sentence (max 80 characters) MOTD. No commentary."
+                    content: "You are a witty programmer. Output ONLY a short one-sentence (max 70 characters) MOTD. No commentary."
                 },
                 {
                     role: "user",
