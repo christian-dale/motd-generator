@@ -1,3 +1,5 @@
+import { escape } from "html-escaper";
+
 export default {
     async fetch(request, env, ctx) {
         let motd = await env.KV.get("MOTD");
@@ -10,7 +12,7 @@ export default {
         const svg = `
             <svg viewBox="0 0 500 50" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg">
                 <text x="2%" y="50%" font-family="monospace" font-size="12" fill="#02c39a">
-                    ${motd}
+                    ${escape(motd)}
                 </text>
                 <text x="2%" y="85%" font-family="monospace" font-size="9" fill="#078b6e">
                     🤖 AI-generated daily quote

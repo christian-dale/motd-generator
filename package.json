@@ -10,5 +10,8 @@
 	},
 	"devDependencies": {
 		"wrangler": "^4.59.2"
+	},
+	"dependencies": {
+		"html-escaper": "^3.0.3"
 	}
 }
