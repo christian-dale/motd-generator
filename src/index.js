@@ -11,10 +11,10 @@ export default {
 
         const svg = `
             <svg viewBox="0 0 500 50" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg">
-                <text x="2%" y="50%" font-family="monospace" font-size="12" fill="#02c39a">
+                <text x="2%" y="50%" font-family="monospace" font-size="10" fill="#02c39a">
                     ${escape(motd)}
                 </text>
-                <text x="2%" y="85%" font-family="monospace" font-size="9" fill="#078b6e">
+                <text x="2%" y="85%" font-family="monospace" font-size="8" fill="#078b6e">
                     🤖 AI-generated daily quote
                 </text>
             </svg>
