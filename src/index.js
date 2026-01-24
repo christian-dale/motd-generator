@@ -45,7 +45,7 @@ export default {
                 }
             ],
             max_tokens: 20,
-            temperature: 0.8
+            temperature: 0.7
         });
 
         await env.KV.put("MOTD", res.response);
