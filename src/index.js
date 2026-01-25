@@ -2,17 +2,23 @@ import { escape } from "html-escaper";
 
 export default {
     async fetch(request, env, ctx) {
-        let motd = await env.KV.get("MOTD") ?? await this.updateMOTD(env);
+        let motd = escape(
+            await env.KV.get("MOTD") ?? await this.updateMOTD(env)
+        );
 
         const svg = `
-            <svg viewBox="0 0 500 50" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg">
-                <text x="2%" y="50%" font-family="monospace" font-size="10" fill="#02c39a">
-                    ${escape(motd)}
-                </text>
-                <text x="2%" y="85%" font-family="monospace" font-size="8" fill="#078b6e">
-                    🤖 AI-generated daily quote
-                </text>
-            </svg>
+            <svg width="500" height="70" xmlns="http://www.w3.org/2000/svg">
+                    <foreignObject x="0" y="0" width="100%" height="50">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                            style="font-family: monospace; font-size: 12px; color: #02c39a; text-align: left;">
+                            ${motd}
+                        </div>
+                    </foreignObject>
+
+                    <text x="0" y="50" font-family="monospace" font-size="9" fill="#078b6e">
+                        🤖 AI-generated daily quote
+                    </text>
+                </svg>
         `;
 
         return new Response(svg, {
