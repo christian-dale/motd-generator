@@ -2,12 +2,7 @@ import { escape } from "html-escaper";
 
 export default {
     async fetch(request, env, ctx) {
-        let motd = await env.KV.get("MOTD");
-
-        if (!motd) {
-            await this.updateMOTD(env);
-            motd = await env.KV.get("MOTD");
-        }
+        let motd = await env.KV.get("MOTD") ?? await this.updateMOTD(env);
 
         const svg = `
             <svg viewBox="0 0 500 50" preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg">
@@ -49,5 +44,7 @@ export default {
         });
 
         await env.KV.put("MOTD", res.response);
+
+        return await env.KV.get("MOTD");
     }
 };
