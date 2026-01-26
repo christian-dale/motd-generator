@@ -42,12 +42,12 @@ export default {
             <svg width="500" height="70" xmlns="http://www.w3.org/2000/svg">
                 <foreignObject x="0" y="0" width="100%" height="50">
                     <div xmlns="http://www.w3.org/1999/xhtml"
-                        style="font-family: monospace; font-size: 12px; color: #02c39a; text-align: left;">
+                        style="font-family: monospace; font-size: 14px; color: #02c39a; text-align: left;">
                         ${escape(text)}
                     </div>
                 </foreignObject>
 
-                <text x="0" y="50" font-family="monospace" font-size="9" fill="#078b6e">
+                <text x="0" y="50" font-family="monospace" font-size="10" fill="#078b6e">
                     🤖 Auto-generated daily quote
                 </text>
             </svg>
