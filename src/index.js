@@ -21,14 +21,14 @@ export default {
             messages: [
                 {
                     role: "system",
-                    content: "You are a witty programmer. Output ONLY a short one-sentence (max 70 characters) MOTD. No commentary."
+                    content: "You are a witty programmer. Output ONLY a short one-sentence (max 80 characters) MOTD. No commentary."
                 },
                 {
                     role: "user",
                     content: "Generate a funny programmer MOTD"
                 }
             ],
-            max_tokens: 20,
+            max_tokens: 30,
             temperature: 0.7
         });
 
