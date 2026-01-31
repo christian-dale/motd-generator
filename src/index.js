@@ -43,7 +43,7 @@ export default {
                 <foreignObject x="0" y="0" width="100%" height="50">
                     <div xmlns="http://www.w3.org/1999/xhtml"
                         style="font-family: monospace; font-size: 14px; color: #02c39a; text-align: left;">
-                        ${escape(text)}
+                        "${escape(text.replace(/^["]|\."|\.$/g, ""))}"
                     </div>
                 </foreignObject>
 
