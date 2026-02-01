@@ -10,4 +10,4 @@ It's as easy as adding the following Markdown to your README:
 
 ## Technical details
 The MOTD generator is intended to run on Cloudflare Workers.
-Locally, a tool called [Wrangler](https://developers.cloudflare.com/workers/wrangler) is used which can easily be installed in this repo by running `npm install`.
+Locally, a tool called [Wrangler](https://developers.cloudflare.com/workers/wrangler) is used which can easily be installed in this repo by running `npm install`. After that you can start the development server with `npx wrangler dev`.
