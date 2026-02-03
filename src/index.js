@@ -39,8 +39,8 @@ export default {
 
     buildSVG(text) {
         return `
-            <svg width="500" height="70" xmlns="http://www.w3.org/2000/svg">
-                <foreignObject x="0" y="0" width="100%" height="50">
+            <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
+                <foreignObject x="0" y="0" width="500" height="100">
                     <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: monospace;">
                         <div style="font-size: 14px; color: #02c39a;">
                             "${escape(text.replace(/^["]|\."|\.$/g, ""))}"
