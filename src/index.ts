@@ -46,6 +46,13 @@ export default {
     async fetch(request: Request, env: Env, ctx: ExecutionContext) {
         const motd = await env.KV.get("MOTD") ?? await updateMOTD(env);
 
+        const url = new URL(request.url);
+        const isText = url.searchParams.has("is_text");
+
+        if (isText) {
+            return new Response(motd);
+        }
+
         return new Response(buildSVG(motd as string), {
             headers: {
                 "Content-Type": "image/svg+xml",
