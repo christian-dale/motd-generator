@@ -1,5 +1,5 @@
 import { escape } from "html-escaper";
-import { ExportedHandler, KVNamespace, Ai, ExecutionContext, ScheduledController } from "@cloudflare/workers-types";
+import { KVNamespace, Ai, ExecutionContext, ScheduledController } from "@cloudflare/workers-types";
 
 interface Env {
     KV: KVNamespace;
