@@ -1,6 +1,6 @@
 # MOTD Generator
 
-[![Version](https://img.shields.io/github/package-json/v/christian-dale/motd-generator?color=02c39a)](./package.json)
+[![Version](https://img.shields.io/github/package-json/v/christian-dale/motd-generator?color=02c39a)](https://github.com/christian-dale/motd-generator/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Cloudflare Workers](https://img.shields.io/badge/runtime-Cloudflare%20Workers-F38020)](https://workers.cloudflare.com/)
 
