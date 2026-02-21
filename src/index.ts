@@ -47,18 +47,24 @@ export default {
         const motd = await env.KV.get("MOTD") ?? await updateMOTD(env);
 
         const url = new URL(request.url);
-        const isText = url.searchParams.has("is_text");
+        const format = url.searchParams.get("format");
 
-        if (isText) {
-            return new Response(motd);
+        switch (format) {
+            case "text":
+                return new Response(motd);
+            case "json":
+                return new Response(JSON.stringify({ motd }), {
+                    headers: { "Content-Type": "application/json" }
+                });
+            default:
+            case "svg":
+                return new Response(buildSVG(motd as string), {
+                    headers: {
+                        "Content-Type": "image/svg+xml",
+                        "Cache-Control": "no-cache, no-store, must-revalidate"
+                    }
+                });
         }
-
-        return new Response(buildSVG(motd as string), {
-            headers: {
-                "Content-Type": "image/svg+xml",
-                "Cache-Control": "no-cache, no-store, must-revalidate"
-            }
-        });
     },
 
     async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {

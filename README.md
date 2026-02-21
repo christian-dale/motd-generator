@@ -16,7 +16,7 @@ Great for your [GitHub profile README](https://docs.github.com/en/account-and-pr
 - Generates a short, witty developer MOTD using Cloudflare AI
 - Stores the latest message in Cloudflare KV
 - Refreshes once per day via cron trigger (`0 0 * * *`)
-- Serves either SVG (default) or plain text (`?is_text`)
+- Supports multiple output formats via `?format` parameter
 
 ## Quick start
 
@@ -33,23 +33,29 @@ Perfect for GitHub profile READMEs.
 ### Default: SVG image
 
 ```text
-https://motd-generator.christiandale.workers.dev/
+https://motd-generator.christiandale.workers.dev/?format=svg
 ```
 
-### Text-only mode
-
-Append `?is_text` to return plain text instead of SVG.
+### Plain text mode
 
 ```text
-https://motd-generator.christiandale.workers.dev/?is_text
+https://motd-generator.christiandale.workers.dev/?format=text
 ```
+
+### JSON mode (for API use)
+
+```text
+https://motd-generator.christiandale.workers.dev/?format=json
+```
+
+Supported formats: `svg` (default), `text`, `json`.
 
 ## Architecture
 
 1. `scheduled` event runs daily and generates a new MOTD via `env.AI.run(...)`
 2. Result is persisted to KV under key `MOTD`
 3. `fetch` returns KV value (or generates on-demand if missing)
-4. Output is returned as SVG (`image/svg+xml`) or plain text
+4. Output format is determined by `?format` query parameter
 
 ## Local development
 
