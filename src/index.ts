@@ -6,6 +6,10 @@ interface Env {
     AI: Ai;
 }
 
+function normalizeMOTD(text: string) {
+    return escape(text.replace(/^["]|\."|\.$/g, ""));
+}
+
 async function updateMOTD(env: Env) {
     const res = await env.AI.run("@cf/meta/llama-3.2-1b-instruct", {
         messages: [
@@ -33,7 +37,7 @@ function buildSVG(text: string) {
             <foreignObject x="0" y="0" width="500" height="100">
                 <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: monospace;">
                     <div style="font-size: 14px; color: #02c39a;">
-                        "${escape(text.replace(/^["]|\."|\.$/g, ""))}"
+                        "${text}"
                     </div>
                     <div style="font-size: 10px; color: #02c39a;">🤖 Auto-generated daily quote</div>
                 </div>
@@ -44,7 +48,7 @@ function buildSVG(text: string) {
 
 export default {
     async fetch(request: Request, env: Env, ctx: ExecutionContext) {
-        const motd = await env.KV.get("MOTD") ?? await updateMOTD(env);
+        const motd = normalizeMOTD(await env.KV.get("MOTD") ?? await updateMOTD(env) as string);
 
         const url = new URL(request.url);
         const format = url.searchParams.get("format");
