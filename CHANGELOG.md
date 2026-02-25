@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.0](https://github.com/christian-dale/motd-generator/compare/v0.1.0...v0.2.0) (2026-02-24)
+
+
+### Features
+
+* add format response option ([a806626](https://github.com/christian-dale/motd-generator/commit/a8066267c6466e7b9aac367ff830489852d76fe6))
+* add text only response option ([5c0868c](https://github.com/christian-dale/motd-generator/commit/5c0868c5124ce46467b3b9a53fb1cde0c7996194))
+
+
+### Bug Fixes
+
+* normalization of MOTD for text and json ([f798ba9](https://github.com/christian-dale/motd-generator/commit/f798ba9f7f2d0d852c64ad0a7772637273196c1f))
+
 ## 0.1.0 (2026-02-18)
 
 
